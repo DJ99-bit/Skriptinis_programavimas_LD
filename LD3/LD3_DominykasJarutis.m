@@ -64,3 +64,74 @@ xlabel('y');
 ylabel('x');
 
 grid on;
+
+%% Papildoma uzduotis
+
+t = 0:0.005:1.5;
+A = 8;
+f = 5;
+sigma = 1.8;
+U1 = 5;
+U2 = 3;
+
+s = A*cos(2*pi*f*t);
+n = sigma*randn(size(t));
+s = s + n;
+
+s_filtruotas = s;
+s_filtruotas(abs(s_filtruotas) < U2) = 0;
+
+%% a.
+
+figure(5);
+subplot(2, 1, 1);
+
+plot(t, s, 'k');
+hold on;
+plot(t, s_filtruotas, 'Color', [0.5 0 0.5]);
+yline(U1, '--');
+yline(U2, '-');
+hold off;
+
+title('Pradinis ir filtruotas signalai');
+xlabel('Laikas, s', 'Color', 'r', 'FontSize', 13, 'FontWeight', 'bold');
+ylabel('Itampa, V', 'Color', 'r', 'FontSize', 13, 'FontWeight', 'bold');
+
+legend('Pradinis signalas', 'Filtruotas signalas', ...
+    'U_1', 'U_2', 'Location', 'southwest');
+
+axis([min(t) max(t) ...
+    min([s s_filtruotas U1 U2])-1 max([s s_filtruotas U1 U2])+1]);
+grid on;
+
+%% b.
+
+atranka = s > U1;
+t_atrinktas = t(atranka);
+s_atrinktas = s(atranka);
+
+min_taskai = s_atrinktas == min(s_atrinktas);
+max_taskai = s_atrinktas == max(s_atrinktas);
+
+figure(5);
+subplot(2, 1, 2);
+
+stem(t_atrinktas, s_atrinktas);
+hold on;
+
+plot(t_atrinktas(min_taskai), s_atrinktas(min_taskai), ...
+    'ys', 'MarkerFaceColor', 'y');
+
+plot(t_atrinktas(max_taskai), s_atrinktas(max_taskai), 'ro');
+
+hold off;
+
+title('Pradinio signalo reiksmes, virsijancios U_1');
+xlabel('Laikas, s', 'Color', 'r', 'FontSize', 13, 'FontWeight', 'bold');
+ylabel('Itampa, V', 'Color', 'r', 'FontSize', 13, 'FontWeight', 'bold');
+
+legend('Reiksmes virs U_1', 'Minimali reiksme', ...
+    'Maksimali reiksme', 'Location', 'southwest');
+
+axis([min(t) max(t) 0 max(s_atrinktas)+1]);
+grid on;
