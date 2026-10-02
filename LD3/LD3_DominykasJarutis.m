@@ -39,3 +39,28 @@ ylabel('f(x)');
 
 grid on;
 legend('x^e', 'x^{2e}', 'x^{3e}', 'Location', 'northeastoutside');
+
+%% 2a.
+
+x3 = linspace(-2*pi, 2*pi, 41);
+y3 = x3.^3 + sin(x3);
+
+figure(3);
+quiver(x3, zeros(size(x3)), zeros(size(x3)), y3, 0);
+
+title('Funkcijos y = x^3 + sin(x) vektoriai');
+xlabel('x');
+ylabel('y');
+
+grid on;
+
+%% 2b.
+
+figure(4);
+barh(x3, y3);
+
+title('x priklausomybe nuo y, kai y = x^3 + sin(x)');
+xlabel('y');
+ylabel('x');
+
+grid on;
