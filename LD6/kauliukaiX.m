@@ -1,5 +1,5 @@
 function kauliukaiX(X)
-% KAULIUKAIX Imituoja X losimo kauliuku metima.
+% KauliukaiX Imituoja X losimo kauliuku metima.
 % Naudojimas: kauliukaiX(X), kur X yra kauliuku kiekis.
 % Rezultatus parodo eilutes vektoriumi. Isvesties argumentu nera.
 
