@@ -1,6 +1,6 @@
-%% Dominykas Jarutis EF-25/2 2026-10-09
+% Dominykas Jarutis EF-25/2 2026-10-09
 
-% 1.
+%% 1.
 
 clear;
 clc;
@@ -62,10 +62,11 @@ D = {1, 2; 3, 4};
 disp('cell2mat rezultatas:');
 disp(cell2mat(D));
 
-% 2.
+%% 2.
 
 clear;
 clc;
+
 
 while true
     m = input('Iveskite m: ');
@@ -106,7 +107,7 @@ while true
     disp('Noredami baigti, iveskite vienodus skaicius.');
 end
 
-% Papildoma
+%% Papildoma
 
 clear;
 clc;
